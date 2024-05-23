@@ -42,11 +42,11 @@ include_once 'crud.php';
                 while ($row = $res->fetch_assoc()) {
                     echo '<div class="col-md-4">';
                     echo '<div class="thumbnail" onclick="location.href=\'student_page.php?id='.htmlspecialchars($row['id']).'\'" style="cursor:pointer;">';
-                    if (!is_null($row['photo'])) {
-                        echo '<img src="./uploaded_files/'.htmlspecialchars($row['photo']).'" alt="Student Photo" style="width:100%; height:auto;">';
-                    } else {
+                    if ($row['photo'] == "") {
                         echo '<img src="./img/Default_pfp.svg" alt="Default Image" style="width:100%; height:auto;">';
-                    }
+                    }else if (!is_null($row['photo'])) {
+                        echo '<img src="./uploaded_files/'.htmlspecialchars($row['photo']).'" alt="Student Photo" style="width:100%; height:auto;">';
+                    } 
                     echo '<div class="caption">';
                     echo '<h3>'.htmlspecialchars($row['fn']).' '.htmlspecialchars($row['ln']).'</h3>';
                     echo '<p><strong>Job:</strong> '.htmlspecialchars($row['job']).'</p>';
@@ -77,11 +77,12 @@ include_once 'crud.php';
                     while ($row = $res->fetch_assoc()) {
                         echo '<tr onclick="location.href=\'student_page.php?id='.htmlspecialchars($row['id']).'\'" style="cursor:pointer;">';
                         echo '<td>';
-                        if (!is_null($row['photo'])) {
-                            echo '<img src="./uploaded_files/'.htmlspecialchars($row['photo']).'" style="width:50px; height:auto;">';
-                        } else {
+                        if ($row['photo'] == ""){
                             echo '<img src="./img/Default_pfp.svg" style="width:50px; height:auto;">';
                         }
+                        else if (!is_null($row['photo'])) {
+                            echo '<img src="./uploaded_files/'.htmlspecialchars($row['photo']).'" style="width:50px; height:auto;">';
+                        } 
                         echo '</td>';
                         echo '<td>'.htmlspecialchars($row['fn']).'</td>';
                         echo '<td>'.htmlspecialchars($row['ln']).'</td>';

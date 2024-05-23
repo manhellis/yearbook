@@ -124,8 +124,8 @@ if (isset($_GET['edit'])) {
                     <th>Words</th>
                     <th>Inspire</th>
                     <th>Dislike</th>
-                    <th colspan="2">Photo</th>
-                    <th>Actions</th> <!-- Added for the Edit/Delete links -->
+                    <th >Photo</th>
+                    <th>Actions</th> 
                 </tr>
             </thead>
             <tbody>
@@ -141,8 +141,8 @@ if (isset($_GET['edit'])) {
                         <td><?php echo $row['words']; ?></td>
                         <td><?php echo $row['inspire']; ?></td>
                         <td><?php echo $row['dislike']; ?></td>
-                        <td colspan="2">
-                            <?php if (is_null($row['photo'])) { ?>
+                        <td>
+                            <?php if ($row['photo'] == "") { ?>
                                 <span>no photo</span>
                             <?php } else { ?>
                                 <img src="./uploaded_files/<?php echo htmlspecialchars($row['photo']); ?>" alt="photo" class="img-thumbnail" style="width: 100px; height: 100px;">
