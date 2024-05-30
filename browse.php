@@ -1,5 +1,10 @@
 <?php
 include_once 'crud.php';
+session_start();
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header("Location: login.php"); // Redirect to login.php if not logged in
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -23,6 +28,7 @@ include_once 'crud.php';
                 <ul class="nav navbar-nav">
                     <li><a href="index.php">Home</a></li>
                     <li class="active"><a href="browse.php">Browse</a></li>
+                    <li><button type="button" class="btn btn-warning"><a href="logout.php">Logout</a></button></li>
                 </ul>
             </div>
         </nav>

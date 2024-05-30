@@ -1,5 +1,12 @@
 <?php
-
+session_start();
+// Debugging
+error_log("Session ID: " . session_id());
+error_log("Session variables: " . print_r($_SESSION, true));
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header("Location: login.php"); // Redirect to login.php if not logged in
+    exit();
+}
 include_once 'crud.php';
 $fn = ''; // Initialize variables to hold field values
 $ln = '';
@@ -53,6 +60,8 @@ if (isset($_GET['edit'])) {
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="index.php">Home</a></li>
                     <li><a href="browse.php">Browse</a></li>
+                    <li><button type="button" class="btn btn-warning"><a href="logout.php">Logout</a></button></li>
+
                 </ul>
             </div>
         </nav>
