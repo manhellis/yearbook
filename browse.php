@@ -44,7 +44,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
         <div id="cards-view">
             <div class="row">
                 <?php
-                $res = $mySQLiconn->query("SELECT * FROM students ORDER BY ln, fn ASC");
+                $res = $mySQLiconn->query("SELECT * FROM students_login  ORDER BY ln, fn ASC");
                 while ($row = $res->fetch_assoc()) {
                     echo '<div class="col-md-4">';
                     echo '<div class="thumbnail" onclick="location.href=\'student_page.php?id='.htmlspecialchars($row['id']).'\'" style="cursor:pointer;">';

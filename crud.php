@@ -5,7 +5,7 @@ include_once 'db.php';
 function deletePhotoFile($id)
 {
     global $mySQLiconn;
-    $stmt = $mySQLiconn->prepare("SELECT photo FROM students WHERE id = ?");
+    $stmt = $mySQLiconn->prepare("SELECT photo FROM students_login WHERE id = ?");
     $stmt->bind_param("i", $id);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -24,6 +24,8 @@ if (isset($_POST['save'])) {
     $words = $mySQLiconn->real_escape_string($_POST['words']);
     $inspire = $mySQLiconn->real_escape_string($_POST['inspire']);
     $dislike = $mySQLiconn->real_escape_string($_POST['dislike']);
+    $password = $mySQLiconn->real_escape_string($_POST['password']);
+    $email = $mySQLiconn->real_escape_string($_POST['email']);
     $photoName = null;
 
     // Check if a file has been uploaded
@@ -57,9 +59,9 @@ if (isset($_POST['save'])) {
             die('Error moving the file.');
         }
     }
+    $password = password_hash($password, PASSWORD_DEFAULT);
 
-
-    $sql = $mySQLiconn->query("INSERT INTO students (fn, ln, job, words, inspire, dislike, photo) VALUES ('$fn','$ln','$job','$words', '$inspire', '$dislike', '$photoName')");
+    $sql = $mySQLiconn->query("INSERT INTO students_login (fn, ln, job, words, inspire, dislike, photo, password, email) VALUES ('$fn','$ln','$job','$words', '$inspire', '$dislike', '$photoName', '$password', '$email')");
     if (!$sql) {
         echo $mySQLiconn->error;
     }
@@ -71,7 +73,7 @@ if (isset($_GET['del'])) {
     deletePhotoFile($id);
 
     // Delete record from the database using a prepared statement
-    $stmt = $mySQLiconn->prepare("DELETE FROM students WHERE id = ?");
+    $stmt = $mySQLiconn->prepare("DELETE FROM students_login WHERE id = ?");
     $stmt->bind_param("i", $id);
     $result = $stmt->execute();
     if (!$result) {
@@ -84,7 +86,7 @@ if (isset($_GET['del'])) {
 }
 
 if (isset($_GET['edit'])) {
-    $sql = $mySQLiconn->query("SELECT * FROM students WHERE id=" . $_GET['edit']);
+    $sql = $mySQLiconn->query("SELECT * FROM students_login WHERE id=" . $_GET['edit']);
     if (!$sql) {
         echo $mySQLiconn->error;
     }
@@ -138,11 +140,11 @@ if (isset($_POST['update'])) {
 
     // Update record, including new photo if uploaded
     if ($photoName) {
-        $stmt = $mySQLiconn->prepare("UPDATE students SET fn = ?, ln = ?, job = ?, words = ?, inspire = ?, dislike = ?, photo = ? WHERE id = ?");
+        $stmt = $mySQLiconn->prepare("UPDATE students_login SET fn = ?, ln = ?, job = ?, words = ?, inspire = ?, dislike = ?, photo = ? WHERE id = ?");
         $stmt->bind_param("sssssssi", $fn, $ln, $job, $words, $inspire, $dislike, $photoName, $id);
     } else {
         // If no new photo, don't update the photo column
-        $stmt = $mySQLiconn->prepare("UPDATE students SET fn = ?, ln = ?, job = ?, words = ?, inspire = ?, dislike = ? WHERE id = ?");
+        $stmt = $mySQLiconn->prepare("UPDATE students_login  SET fn = ?, ln = ?, job = ?, words = ?, inspire = ?, dislike = ? WHERE id = ?");
         $stmt->bind_param("ssssssi", $fn, $ln, $job, $words, $inspire, $dislike, $id);
     }
 
