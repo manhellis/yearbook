@@ -1,5 +1,12 @@
 <?php
-
+session_start();
+// Debugging
+error_log("Session ID: " . session_id());
+error_log("Session variables: " . print_r($_SESSION, true));
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header("Location: login.php"); // Redirect to login.php if not logged in
+    exit();
+}
 include_once 'crud.php';
 $fn = ''; // Initialize variables to hold field values
 $ln = '';
@@ -9,6 +16,7 @@ $inspire = '';
 $dislike = '';
 $photo = '';
 $row = null;
+$password = '';
 if (isset($_GET['edit'])) {
     $id = $_GET['edit'];
     $res = $mySQLiconn->query("SELECT * FROM students WHERE id=$id");
@@ -53,6 +61,8 @@ if (isset($_GET['edit'])) {
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="index.php">Home</a></li>
                     <li><a href="browse.php">Browse</a></li>
+                    <li><button type="button" class="btn btn-warning"><a href="logout.php">Logout</a></button></li>
+
                 </ul>
             </div>
         </nav>
@@ -85,6 +95,8 @@ if (isset($_GET['edit'])) {
             <div class="form-group">
                 <input type="text" name="firstname" class="form-control" id='firstname' placeholder="First Name" value="<?php echo htmlspecialchars($fn); ?>" required>
                 <input type="text" name="lastname" class="form-control" id='lastname' placeholder="Last Name" value="<?php echo htmlspecialchars($ln); ?>" required>
+                <input type='email' name='email' class='form-control' placeholder="Email" required>
+                <input type='password' name='password' class='form-control' placeholder="Password" required>
                 <input type="text" id="job" name="job" class='form-control' placeholder="Job" value="<?php echo htmlspecialchars($job); ?>" required>
 
 
@@ -120,6 +132,7 @@ if (isset($_GET['edit'])) {
                     <th>ID</th>
                     <th>First Name</th>
                     <th>Last Name</th>
+                    <th>email</th>
                     <th>Job</th>
                     <th>Words</th>
                     <th>Inspire</th>
@@ -130,13 +143,14 @@ if (isset($_GET['edit'])) {
             </thead>
             <tbody>
                 <?php
-                $res = $mySQLiconn->query("SELECT * FROM students");
+                $res = $mySQLiconn->query("SELECT * FROM students_login");
                 while ($row = $res->fetch_array()) {
                 ?>
                     <tr>
                         <td><?php echo $row['id']; ?></td>
                         <td><?php echo $row['fn']; ?></td>
                         <td><?php echo $row['ln']; ?></td>
+                        <td><?php echo $row['email']; ?></td>
                         <td><?php echo $row['job']; ?></td>
                         <td><?php echo $row['words']; ?></td>
                         <td><?php echo $row['inspire']; ?></td>

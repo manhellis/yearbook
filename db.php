@@ -1,5 +1,6 @@
 
 <?php
+// session_start();
 
 define('_HOST_NAME', 'localhost:8889');
 define('_DATABASE_USER_NAME', 'root');
