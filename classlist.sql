@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: May 30, 2024 at 08:32 PM
+-- Generation Time: Jun 06, 2024 at 08:51 PM
 -- Server version: 5.7.39
 -- PHP Version: 8.2.0
 
@@ -71,7 +71,18 @@ CREATE TABLE `students_login` (
 --
 
 INSERT INTO `students_login` (`id`, `fn`, `ln`, `photo`, `job`, `words`, `inspire`, `dislike`, `email`, `password`) VALUES
-(1, 'manh', 'ellisTest', NULL, NULL, NULL, NULL, NULL, 'test@test.com', '$2y$10$SfhYIDtn.iOuCW7zfoFLuuZHX6lja4lF4XA4JqNmpiH/.P3zB8JCa');
+(1, 'manh', 'ellisTest', NULL, NULL, NULL, NULL, NULL, 'test@test.com', '$2y$10$SfhYIDtn.iOuCW7zfoFLuuZHX6lja4lF4XA4JqNmpiH/.P3zB8JCa'),
+(2, 'john', 'pass1234', '', 'asdf', 'asdf', 'adfasdg', 'adsgasdg', 'john@test.com', '$2y$10$4KYYQypeHQyeyQfDeKfa9uIOI0sJk1J7WLRe25g0mtIYAyHMVbsni'),
+(3, 'Alice', 'Smith', '', 'Engineer', 'Dream big', 'Mother', 'Laziness', 'alice@test.com', '$2y$10$SfhYIDtn.iOuCW7zfoFLuuZHX6lja4lF4XA4JqNmpiH/.P3zB8JCa'),
+(4, 'Bob', 'Brown', '', 'Doctor', 'Never give up', 'Father', 'Procrastination', 'bob@test.com', '$2y$10$SfhYIDtn.iOuCW7zfoFLuuZHX6lja4lF4XA4JqNmpiH/.P3zB8JCa'),
+(5, 'Carol', 'Davis', '', 'Artist', 'Create daily', 'Teacher', 'Negativity', 'carol@test.com', '$2y$10$SfhYIDtn.iOuCW7zfoFLuuZHX6lja4lF4XA4JqNmpiH/.P3zB8JCa'),
+(6, 'David', 'Evans', '', 'Writer', 'Write often', 'Friend', 'Dishonesty', 'david@test.com', '$2y$10$SfhYIDtn.iOuCW7zfoFLuuZHX6lja4lF4XA4JqNmpiH/.P3zB8JCa'),
+(7, 'Eve', 'Garcia', '', 'Chef', 'Cook with love', 'Grandmother', 'Messiness', 'eve@test.com', '$2y$10$SfhYIDtn.iOuCW7zfoFLuuZHX6lja4lF4XA4JqNmpiH/.P3zB8JCa'),
+(8, 'Frank', 'Harris', '', 'Musician', 'Play passionately', 'Brother', 'Noise', 'frank@test.com', '$2y$10$SfhYIDtn.iOuCW7zfoFLuuZHX6lja4lF4XA4JqNmpiH/.P3zB8JCa'),
+(9, 'Grace', 'Jones', '', 'Photographer', 'Capture moments', 'Sister', 'Blurred photos', 'grace@test.com', '$2y$10$SfhYIDtn.iOuCW7zfoFLuuZHX6lja4lF4XA4JqNmpiH/.P3zB8JCa'),
+(10, 'Henry', 'Lewis', '', 'Teacher', 'Educate with care', 'Principal', 'Ignorance', 'henry@test.com', '$2y$10$SfhYIDtn.iOuCW7zfoFLuuZHX6lja4lF4XA4JqNmpiH/.P3zB8JCa'),
+(11, 'Ivy', 'Martin', '', 'Designer', 'Design beautifully', 'Colleague', 'Bad design', 'ivy@test.com', '$2y$10$SfhYIDtn.iOuCW7zfoFLuuZHX6lja4lF4XA4JqNmpiH/.P3zB8JCa'),
+(12, 'Jack', 'Nelson', '', 'Programmer', 'Code smartly', 'Mentor', 'Bugs', 'jack@test.com', '$2y$10$SfhYIDtn.iOuCW7zfoFLuuZHX6lja4lF4XA4JqNmpiH/.P3zB8JCa');
 
 --
 -- Indexes for dumped tables
@@ -103,7 +114,7 @@ ALTER TABLE `students`
 -- AUTO_INCREMENT for table `students_login`
 --
 ALTER TABLE `students_login`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

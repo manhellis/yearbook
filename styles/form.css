@@ -62,7 +62,20 @@ h1 {
 
 main {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
+    align-items: center;
     font-family: "Poppins", sans-serif;
+    height: calc(100vh - 80px);
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 60%;
+}
+form{
+    width: 50%;
+}
+img{
+    width: 50%;
 }

@@ -22,6 +22,20 @@
         </nav>
     </header>
     <main>
+        <div class="container">
+            <h2>Create a Profile</h2>
+            <form>
+                <label>
+                    <p>First Name</p>
+                </label>
+                <input type="text" name="fn" placeholder="Enter First Name">
+                <label>
+                    <p>Last Name</p>
+                </label>
+                <input type="text" name="ln" placeholder="Enter Last Name">
+            </form>
+        </div>
+        <img src="./img/manh_ellis.jpeg" alt="BCIT Logo" class="logo">
 
     </main>
 
