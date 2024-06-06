@@ -82,7 +82,7 @@
                         window.location.href = 'student_page.php?id=' + encodeURIComponent(response.id);
                     } else {
                         document.getElementById('errorMessage').style.display = 'block';
-                        document.getElementById('errorMessage').innerText = response;
+                        document.getElementById('errorMessage').innerText = response.response;
                     }
                 }
             };
