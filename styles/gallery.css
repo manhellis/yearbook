@@ -64,7 +64,6 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     font-family: "Poppins", sans-serif;
 }
 
@@ -72,9 +71,8 @@ main {
     width: 50%;
     height: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
-    margin: 4em 0;
+    margin: 4em;
 }
 .gallery {
     width: 100%;
@@ -84,11 +82,12 @@ main {
     align-items: center;
 }
 .tabs {
+    margin-left: 4em;
     align-self: flex-start;
 }
 .tabs button {
     color: white;
-    padding: 0.5em 1em;
+    padding: 0.5em 2em;
     font-size: 1.6em;
     font-weight: bold;
     border: none;
@@ -119,7 +118,9 @@ main {
     width: 100%;
 }
 .search input {
+    /* padding: 0.6em 4em 0.6em 0.6em; */
     padding: 0.6em;
+    width: 50%;
     border-radius: 0.25em;
     border: none;
     margin-right: 0.5em;

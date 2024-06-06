@@ -5,10 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QA Yearbook Login</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="./styles/gallery.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/e416cc9f05.js" crossorigin="anonymous"></script>
     <link
   rel="stylesheet"
@@ -36,7 +33,7 @@
                 <h1>The Gallery</h1>
                 <h3>BCIT Yearbook</h3>
                 <p>Search for yourself, friends or family through our digital gallery!</p>
-                <a href="login.html" id="login">Log into your yearbook</a>
+                <a href="login.php" id="login">Log into your yearbook</a>
             </div>
         </div>
         <div class="gallery">
