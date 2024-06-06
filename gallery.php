@@ -26,7 +26,6 @@
             <ul>
                 <li><a href="./index.html">Home</a></li>
                 <li><a href="./gallery.php">Galleries</a></li>
-                <li><a href="#">Staff & Faculties</a></li>
                 <li><a href="#" style="color: white;"><button id="contact">Contact</a></button></li>
             </ul>
         </nav>
