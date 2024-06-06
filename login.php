@@ -26,7 +26,7 @@
         <h1>Welcome to your Yearbook </h1>
         <div class="container">
             <div class="form-fields">
-                <form action="authenticate.php" method="post">
+                <form id='loginForm' method="post">
                     <label for="email">Whats your student email?</label>
                     <input type="text" name="email" id="email" placeholder="BCIT email">
 
@@ -39,21 +39,23 @@
 
 
                     <!-- go to onboarding -->
-                    <button type="submit" id="create">Create Account</button>
+                    <button type="submit" id="create">Login</button>
                     <div class="checkbox">
-                        <input type="checkbox" name="#" id="check">
+                        <input type="checkbox" name="#" id="check" required>
                         <label>By contrinuing you agree to the Terms of use and Privacy Policy</label>
                     </div>
 
                 </form>
+                <div id="errorMessage" style="color: red; display: none;"></div>
+
             </div>
 
             <div class="returning">
                 <span class="left"></span>
                 <span class="right"></span>
-                <p>Returning User? </p>
+                <p>New User?</p>
                 <!-- go to updating user -->
-                <button id="sign-in">Login Here!</button>
+                <a href="./form.php" id="sign-in">Create Account!</a>
             </div>
 
         </div>
@@ -64,7 +66,29 @@
     <script src="login.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
 
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'authenticate.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    if (response.status === 'success') {
+                        window.location.href = 'student_page.php?id=' + encodeURIComponent(response.id);
+                    } else {
+                        document.getElementById('errorMessage').style.display = 'block';
+                        document.getElementById('errorMessage').innerText = response;
+                    }
+                }
+            };
+            xhr.send('email=' + encodeURIComponent(email) + '&password=' + encodeURIComponent(password));
+        });
+    </script>
 </body>
 
 </html>

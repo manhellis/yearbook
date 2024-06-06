@@ -21,8 +21,10 @@ if ($stmt = $mySQLiconn->prepare('SELECT id, password FROM students_login WHERE 
             session_regenerate_id();
             $_SESSION['loggedin'] = TRUE;
             $_SESSION['id'] = $id;
-            $stmt->close();
-            header('Location: student_page.php?id='.$id);
+            echo json_encode(['status' => 'success', 'id' => $id]);
+
+            // $stmt->close();
+            // header('Location: student_page.php?id='.$id);
             exit();
             // echo 'Welcome back, ' . htmlspecialchars($_SESSION['name'], ENT_QUOTES) . '!';
         } else {
