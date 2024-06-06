@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QA Yearbook Login</title>
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="./styles/login.css">
 </head>
 
 <body>
@@ -15,8 +15,8 @@
         </div>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Gallaries</a></li>
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./gallery.php">Gallaries</a></li>
                 <li><a href="#">Staff & Faculties</a></li>
                 <li><a href="#" style="color: white;"><button id="contact">Contact</a></button></li>
             </ul>
@@ -28,13 +28,13 @@
         <div class="container">
             <div class="form-fields">
                 <form action="#">
-                    <label for="name">Student number</label>
+                    <label for="name">Student email</label>
                     <input type="text" name="#" id="#">
 
                     <label for="name">
-                        <p>Create a password</p> <ion-icon name="eye-off-outline"></ion-icon>
+                        <p>Create a password</p> <ion-icon id="eye" name="eye-off-outline"></ion-icon>
                     </label>
-                    <input type="text" name="#" id="#">
+                    <input type="password" name="#" id="password">
 
                     <div class="checkbox">
                         <input type="checkbox" name="#" id="check">
@@ -52,9 +52,11 @@
             </div>
 
         </div>
+        
+            
     </main>
 
-
+    <script src="login.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
