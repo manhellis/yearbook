@@ -22,7 +22,7 @@ if ($stmt = $mySQLiconn->prepare('SELECT id, password FROM students_login WHERE 
             $_SESSION['loggedin'] = TRUE;
             $_SESSION['id'] = $id;
             $stmt->close();
-            header('Location: index.php');
+            header('Location: student_page.php?id='.$id);
             exit();
             // echo 'Welcome back, ' . htmlspecialchars($_SESSION['name'], ENT_QUOTES) . '!';
         } else {

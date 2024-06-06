@@ -78,7 +78,6 @@ main {
 }
 .gallery {
     width: 100%;
-    height: calc(100vh - 80px);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -112,7 +111,6 @@ main {
     gap: 1em 4em;
     padding: 0 4em;
     background-color: #3d71ae;
-    overflow-y: hidden;
 }
 .search {
     grid-column: span 3;

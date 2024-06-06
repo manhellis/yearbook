@@ -1,40 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login Form</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
-
-<link rel="stylesheet" href="./styles.css">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QA Yearbook Login</title>
+    <link rel="stylesheet" href="./styles/login.css">
 </head>
+
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 col-md-offset-4">
-                <h2 class="text-center">Login</h2>
-                <p>test@test.com password:test</p>
+    <header>
+        <div class="logo">
+            <h2>BCIT Digital Yearbook</h2>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./gallery.php">Gallaries</a></li>
+                <li><a href="#" style="color: white;"><button id="contact">Contact</a></button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Welcome to your Yearbook </h1>
+        <div class="container">
+            <div class="form-fields">
                 <form action="authenticate.php" method="post">
-                    <div class="form-group">
-                        <label for="email">email</label>
-                        <input type="text" name="email" class="form-control" id="email" placeholder="Enter bcit email">
+                    <label for="email">Whats your student email?</label>
+                    <input type="text" name="email" id="email" placeholder="BCIT email">
+
+                    <label for="password">
+                        <p>Create a password</p>
+                        <div class="eye"><ion-icon id="eye" name="eye-off-outline"></ion-icon><span>Hide</span></div>
+                    </label>
+
+                    <input type="password" name="password" class="form-control" id="password" placeholder="Enter password">
+
+
+                    <!-- go to onboarding -->
+                    <button type="submit" id="create">Create Account</button>
+                    <div class="checkbox">
+                        <input type="checkbox" name="#" id="check">
+                        <label>By contrinuing you agree to the Terms of use and Privacy Policy</label>
                     </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" name="password" class="form-control" id="password" placeholder="Enter password">
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+
                 </form>
             </div>
+
+            <div class="returning">
+                <span class="left"></span>
+                <span class="right"></span>
+                <p>Returning User? </p>
+                <!-- go to updating user -->
+                <button id="sign-in">Login Here!</button>
+            </div>
+
         </div>
-    </div>
+
+
+    </main>
+
+    <script src="login.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
 </body>
+
 </html>
