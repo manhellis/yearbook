@@ -7,11 +7,6 @@
     <title>QA Yearbook Login</title>
     <link rel="stylesheet" href="./styles/gallery.css">
     <script src="https://kit.fontawesome.com/e416cc9f05.js" crossorigin="anonymous"></script>
-    <link
-  rel="stylesheet"
-  href="https://unpkg.com/simplebar@latest/dist/simplebar.css"
-/>
-<script src="https://unpkg.com/simplebar@latest/dist/simplebar.min.js"></script>
 </head>
 
 <body>
@@ -54,7 +49,7 @@
                         header("Location: login.php"); // Redirect to login.php if not logged in
                         exit();
                     }
-                    $res = $mySQLiconn->query("SELECT * FROM students_login ORDER BY ln, fn ASC");
+                    $res = $mySQLiconn->query("SELECT * FROM students_login ORDER BY ln, fn ASC ");
                     while ($row = $res->fetch_assoc()) {
                         echo '<div class="student" onclick="location.href=\'student_page.php?id=' . htmlspecialchars($row['id']) . '\'" style="cursor:pointer;">';
                         if ($row['photo'] == "") {
@@ -70,52 +65,31 @@
                     ?>
                 </div>
             </div>
+      
 
-            <!-- <div id="table-view" style="display: none;">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Email</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        $res = $mySQLiconn->query("SELECT * FROM students_login ORDER BY ln, fn ASC");
-                        while ($row = $res->fetch_assoc()) {
-                            echo '<tr>';
-                            echo '<td>' . htmlspecialchars($row['id']) . '</td>';
-                            echo '<td>' . htmlspecialchars($row['fn']) . '</td>';
-                            echo '<td>' . htmlspecialchars($row['ln']) . '</td>';
-                            echo '<td>' . htmlspecialchars($row['email']) . '</td>';
-                            echo '</tr>';
-                        }
-                        ?>
-                    </tbody>
-                </table>
-            </div> -->
-            <script>
-                document.addEventListener('DOMContentLoaded', () => {
-                    const tabs = document.querySelector('.tabs');
+        </div> 
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const tabs = document.querySelector('.tabs');
 
-                    tabs.addEventListener('click', (event) => {
-                        if (event.target.classList.contains('tablinks')) {
-                            // Remove 'active' class from all tab buttons
-                            document.querySelectorAll('.tablinks').forEach(button => {
-                                button.classList.remove('active');
-                            });
+                tabs.addEventListener('click', (event) => {
+                    if (event.target.classList.contains('tablinks')) {
+                        // Remove 'active' class from all tab buttons
+                        document.querySelectorAll('.tablinks').forEach(button => {
+                            button.classList.remove('active');
+                        });
 
-                            // Add 'active' class to the clicked tab button
-                            event.target.classList.add('active');
+                        // Add 'active' class to the clicked tab button
+                        event.target.classList.add('active');
 
-                            // Optionally, handle the tab content display logic here
-                            // Example: openTab(event, event.target.getAttribute('onclick').split("'")[1]);
-                        }
-                    });
+                        // Optionally, handle the tab content display logic here
+                        // Example: openTab(event, event.target.getAttribute('onclick').split("'")[1]);
+                    }
                 });
-            </script>
+                
+                
+            });
+        </script>
         </div>
     </main>
 </body>
