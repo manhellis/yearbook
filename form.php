@@ -36,9 +36,9 @@
                 <div class="step active" data-step="1">
                     <h2>Create a Profile</h2>
                     <label for="name">Full Name</label>
-                    <input id="name" type="text" name="step1Field1">
+                    <input id="name" type="text" name="step1Field1" required>
                     <label for="email">School Email</label>
-                    <input id="email" type="text" name="step1Field2">
+                    <input id="email" type="text" name="step1Field2" required>
                     <button type="button" onclick="nextStep(1)">Next</button>
                 </div>
                 <!-- Step 2 content -->

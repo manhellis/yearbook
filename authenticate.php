@@ -5,7 +5,7 @@ if (!isset($_POST['email'], $_POST['password'])) {
     // Could not get the data that should have been sent.
     exit('Please fill both the email and password fields!');
 }
-if ($stmt = $mySQLiconn->prepare('SELECT id, password FROM students_login WHERE email = ?')) {
+if ($stmt = $mySQLiconn->prepare('SELECT id, password FROM new_students WHERE email = ?')) {
     // Bind parameters (s = string, i = int, b = blob, etc), in our case the username is a string so we use "s"
     $stmt->bind_param('s', $_POST['email']);
     $stmt->execute();

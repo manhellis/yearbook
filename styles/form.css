@@ -1,78 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Genos:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    list-style-type: none;
-    text-decoration: none;
-}
-body,
-html {
-    height: 100%;
-    width: 100%;
-}
-header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    min-height: 80px;
-    padding: 0 50px;
-    font-size: 20px;
-    box-shadow: 0 2px 20px rgb(228, 228, 228);
-    font-family: "Genos", sans-serif;
-}
 
-nav {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    width: 50%;
-    color: black;
-}
 
-nav ul {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    font-size: 1.3em;
-    color: black;
-}
 
-#contact {
-    padding: 10px 20px;
-    font-size: 20px;
-    border-radius: 10px;
-    background-color: rgb(38, 38, 38);
-    font-family: "Genos", sans-serif;
-}
-
-a {
-    color: black;
-}
-/* -------------------------------------------------------------------------------------------------------------------------- */
-h1 {
-    color: rgb(41, 96, 183);
-    font-size: 5em;
-    line-height: 80px;
-}
-
-main {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    font-family: "Poppins", sans-serif;
-    height: calc(100vh - 80px);
-}
-.container {
-    display: flex;
+.create-container {
+    display: none;
     flex-direction: column;
 }
-img {
+.form-img {
     width: 50%;
 }
 
@@ -96,26 +32,28 @@ img {
     transition: left 0.5s ease;
     left: 0;
 }
-form {
+#multiStepForm {
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 1em;
     min-width: 480px;
     transition: all 0.5s ease;
+    /* background-color: rgb(246, 246, 246); */
+    border-radius: 36px;
 }
-form label {
+#multiStepForm label {
     margin-top: 2em;
     font-size: 16px;
     font-weight: 700px;
 }
-form input[type="text"], form textarea {
+#multiStepForm input[type="text"], #multiStepForm textarea {
     padding: 1em;
     border: 1px solid #2a63a64d;
     border-radius: 12px;
     resize: vertical;
 }
-form button:not(.previous) {
+#multiStepForm button:not(.previous) {
     margin-top: 3em;
     align-self: center;
     border-radius: 40px;
@@ -125,10 +63,10 @@ form button:not(.previous) {
     background-color: #19385c;
     transition: all 0.3s ease;
 }
-form button:not(.previous):hover {
+#multiStepForm button:not(.previous):hover {
     background-color: #234975;
 }
-form .previous {
+#multiStepForm .previous {
     border: none;
     margin: 0;
     margin-bottom: 2em;
@@ -144,7 +82,7 @@ form .previous {
     align-items: center;
     transition: all 0.3s ease;
 }
-form .previous:hover {
+#multiStepForm .previous:hover {
     background-color: #4d4d4d;
 }
 .previous i {

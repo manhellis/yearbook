@@ -149,7 +149,7 @@ input {
 }
 
 .returning {
-    width: 50%;
+    max-width: 445px;
     min-height: 120px;
     display: flex;
     flex-direction: column;

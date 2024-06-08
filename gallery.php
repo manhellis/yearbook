@@ -49,13 +49,14 @@
                         header("Location: login.php"); // Redirect to login.php if not logged in
                         exit();
                     }
-                    $res = $mySQLiconn->query("SELECT * FROM students_login ORDER BY ln, fn ASC ");
+                    $res = $mySQLiconn->query("SELECT * FROM new_students ORDER BY ln, fn ASC ");
                     while ($row = $res->fetch_assoc()) {
                         echo '<div class="student" onclick="location.href=\'student_page.php?id=' . htmlspecialchars($row['id']) . '\'" style="cursor:pointer;">';
                         if ($row['photo'] == "") {
                             echo '<img src="./img/Default_pfp.svg" alt="Default Image" style="width:100%">';
                         } else {
-                            echo '<img src="data:image/jpeg;base64,' . base64_encode($row['photo']) . '" alt="Student Image" style="width:100%">';
+                            echo '<img src="./uploaded_files/' . htmlspecialchars($row['photo']) . '" alt="Student Image" style="width:100%">';
+
                         }
                         echo '<div class="caption">';
                         echo '<h3>' . htmlspecialchars($row['fn']) . ' ' . htmlspecialchars($row['ln']) . '</h3>';

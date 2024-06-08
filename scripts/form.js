@@ -5,11 +5,10 @@ const form = document.getElementById("multiStepForm");
 const steps = form.querySelectorAll(".step");
 const img = document.querySelector("img");
 const formHeader = document.querySelector(".step.active h2");
-
+const email = document.querySelector("#email-1");
 const formData = {};
 const progressBar = document.querySelector(".progress-bar");
 const progressIndicator = document.querySelector(".progress");
-
 // Function to navigate to the next step
 function nextStep(step) {
     if (validateStep(step)) {
@@ -65,16 +64,84 @@ function loadStepData(step) {
 
 // Function to validate the data of the current step
 function validateStep(step) {
-    // Add validation logic here if needed
+    if (step === 1) {
+        const emailValue = email.value;
+        const requiredDomain = ["@my.bcit.ca", "@bcit.ca"];
+        const isValidDomain = requiredDomain.some((domain) =>
+            emailValue.endsWith(domain)
+        );
+        if (!isValidDomain) {
+            alert(`Please enter a valid BCIT email address`);
+            return false;
+        } else {
+            console.log("valid");
+        }
+        if (document.querySelector("#name").value === "") {
+            alert("Please enter your name");
+            return false;
+        }
+    }
+
+    const requiredInputs = ["email"];
+
     return true;
 }
 
 form.addEventListener("submit", function (event) {
     event.preventDefault();
     saveStepData(currentStep);
-    // Submit formData to the server using AJAX or other methods
-    console.log(formData);
+    const fullName = formData.step1.step1Field1.split(" ");
+    // const password = document.getElementById('password').value; // so secure right ?!
+    // Prepare the form data
+    const formDataObject = {
+        firstname: fullName[0],
+        lastname: fullName[1],
+        email: formData.step1.step1Field2,
+        term: formData.step2.step2Field1,
+        subject: formData.step2.step2Field2,
+        memory: formData.step3.step3Field1,
+        postgrad: formData.step3.step3Field2,
+        quote: formData.step4.step4Field1,
+        portfolio: formData.step4.step4Field2,
+        password: password,
+    };
+
+    const submitData = new FormData();
+    for (const key in formDataObject) {
+        submitData.append(key, formDataObject[key]);
+    }
+
+    // Add the file to the form data
+    const fileInput = document.getElementById("photo");
+    if (fileInput.files.length > 0) {
+        submitData.append("photo", fileInput.files[0]);
+    }
+
+    // Add a field to indicate the save action
+    submitData.append("save", true);
+
+    // Send the AJAX request
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", "./create_user.php", true);
+
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            // Handle successful response
+            console.log("Form submitted successfully:", xhr.responseText);
+        } else {
+            // Handle error
+            console.error("Error submitting form:", xhr.statusText);
+        }
+    };
+
+    xhr.onerror = function () {
+        // Handle network error
+        console.error("Network error occurred.");
+    };
+
+    xhr.send(submitData);
 });
+
 document.addEventListener("DOMContentLoaded", () => {
     const dropZone = document.getElementById("drop-zone");
     const fileInput = document.getElementById("photo");
