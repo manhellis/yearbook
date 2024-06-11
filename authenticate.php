@@ -1,15 +1,15 @@
 <?php
 include_once 'db.php';
 session_start();
-if ( !isset($_POST['email'], $_POST['password']) ) {
-	// Could not get the data that should have been sent.
-	exit('Please fill both the email and password fields!');
+if (!isset($_POST['email'], $_POST['password'])) {
+    // Could not get the data that should have been sent.
+    exit('Please fill both the email and password fields!');
 }
-if ($stmt = $mySQLiconn->prepare('SELECT id, password FROM students_login WHERE email = ?')) {
-	// Bind parameters (s = string, i = int, b = blob, etc), in our case the username is a string so we use "s"
-	$stmt->bind_param('s', $_POST['email']);
-	$stmt->execute();
-	$stmt->store_result();
+if ($stmt = $mySQLiconn->prepare('SELECT id, password FROM new_students WHERE email = ?')) {
+    // Bind parameters (s = string, i = int, b = blob, etc), in our case the username is a string so we use "s"
+    $stmt->bind_param('s', $_POST['email']);
+    $stmt->execute();
+    $stmt->store_result();
     if ($stmt->num_rows > 0) {
         $stmt->bind_result($id, $password);
         $stmt->fetch();
@@ -21,19 +21,20 @@ if ($stmt = $mySQLiconn->prepare('SELECT id, password FROM students_login WHERE 
             session_regenerate_id();
             $_SESSION['loggedin'] = TRUE;
             $_SESSION['id'] = $id;
-            $stmt->close();
-            header('Location: index.php');
+            echo json_encode(['status' => 'success', 'id' => $id]);
+
+            // $stmt->close();
+            // header('Location: student_page.php?id='.$id);
             exit();
             // echo 'Welcome back, ' . htmlspecialchars($_SESSION['name'], ENT_QUOTES) . '!';
         } else {
             // Incorrect password
-            echo 'Incorrect username and/or password!';
+            echo json_encode(['status' => 'fail', 'response' => 'Incorrect username and/or password!']);
         }
     } else {
         // Incorrect username
-        echo 'Incorrect username and/or password!';
+        echo json_encode(['status' => 'fail', 'response' => 'Incorrect username and/or password!']);
     }
 
-	$stmt->close();
+    $stmt->close();
 }
-?>
