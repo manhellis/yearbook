@@ -19,8 +19,8 @@ main {
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
-    height: 90vh;
-    width: 100%;
+    width: 100vw;
+    height: calc(100vh - 80px)
 }
 
 header {
@@ -132,7 +132,33 @@ h1 {
     color: white;
 }
 
+.graphics {
+    height: calc(50vh - 50px);
+    width: 100%;
+    margin: 1em;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
 
+.graphics img {
+    position: absolute;
+    max-width: 100%;
+    height: auto; /* Preserve aspect ratio */
+    object-fit: cover;
+    border: 20px solid;
+}
+
+.graphics img:nth-child(1) {
+    right: 190px;
+    transform: rotate(20deg);
+    border-color: #456990;
+}
+
+.graphics img:nth-child(2) {
+    right: 400px;
+    border-color: #f9dc5c;
+}
 
 
 /* - Ipad to small laptop */
@@ -197,7 +223,6 @@ h1 {
     }
 }
 
-
 /* - Laptop to bigger screen */
 @media screen and (min-width: 992px) {
     .menu {
@@ -222,36 +247,66 @@ h1 {
 }
 
 /* Graphics Media Queries */
+/* Medium screens (tablets) */
+@media screen and (min-width: 601px) and (max-width: 924px) {
+    .graphics {
+        width: 50%;
+    }
 
-@media screen and (min-width: 1277px) {
+    .graphics img {
+        width: 250px;
+        height: 350px;
+    }
 
-.graphics {
-    order: 2;
-    position: relative;
-    width: 50%;
-    height: calc(100vh - 80px);
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+    .graphics img:nth-child(1) {
+        left: 100px;
+        transform: rotate(-20deg);
+    }
+
+    .graphics img:nth-child(2) {
+        left: 200px;
+    }
 }
 
+/* Larger screens (desktops) */
+@media screen and (min-width: 925px) and (max-width: 1169px) {
+    .graphics {
+        width: 50%;
+    }
 
-.graphics img {
-    position: absolute;
-    width: 300px;
-    height: 420px;
-    object-fit: cover;
-    border: 20px solid;
+    .graphics img {
+        width: 320px;
+        height: 420px;
+    }
+
+    .graphics img:nth-child(1) {
+        left: 100px;
+        transform: rotate(-20deg);
+    }
+
+    .graphics img:nth-child(2) {
+        left: 250px;
+    }
 }
 
-.graphics img:nth-child(1) {
-    right: 190px;
-    transform: rotate(20deg);
-    border-color: #456990;
-}
+/* Extra large screens */
+@media screen and (min-width: 1170px) {
+    .graphics {
+        width: 50%;
+        order: 2;
+    }
 
-.graphics img:nth-child(2) {
-    right: 400px;
-    border-color: #f9dc5c;
-}
+    .graphics img {
+        width: 320px;
+        height: 420px;
+    }
+
+    .graphics img:nth-child(1) {
+        right: 100px;
+        transform: rotate(20deg);
+    }
+
+    .graphics img:nth-child(2) {
+        right: 300px;
+    }
 }
