@@ -112,20 +112,20 @@ main {
 
 .graphics img {
     position: absolute;
-    width: 400px;
-    height: 600px;
+    width: 300px;
+    height: 400px;
     object-fit: cover;
     border: 20px solid;
 }
 
 .graphics img:nth-child(1) {
-    left: 5px;
-    transform: rotate(-10deg);
-    border-color: #f9dc5c;
+    right: 190px;
+    bottom: 60px;
+    transform: rotate(20deg);
+    border-color: #456990;
 }
 
 .graphics img:nth-child(2) {
-    left: 200px;
-    transform: rotate(10deg);
-    border-color: #456990;
+    right: 400px;
+    border-color: #f9dc5c;
 }
