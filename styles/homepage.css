@@ -131,6 +131,10 @@ h1 {
     white-space: nowrap;
     color: white;
 }
+#login a{
+    color: white;
+
+}
 
 .graphics {
     height: calc(50vh - 50px);
