@@ -4,36 +4,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QA Yearbook</title>
-    <link rel="stylesheet" href="./styles/homepage.css">
+    <link rel="stylesheet" href="homepage.css">
+    <title>Homepage</title>
 </head>
 
 <body>
     <header>
-        <div class="logo">
-            <h2>BCIT Digital Yearbook</h2>
-        </div>
-        <nav>
+        <div class="logo" style="font-weight: 800;"> BCIT Digital Yearbook </div>
+        <nav class="menu">
             <ul>
-                <li><a href="">Home</a></li>
-                <li><a href="./gallery.php">Gallaries</a></li>
-                <li><a href="#" style="color: white;"><button id="contact">Contact</a></button></li>
+                <li><a class="menuItem" href="#">Home</a></li>
+                <li><a class="menuItem" href="#">Gallaries</a></li>
+                <li><a class="menuItem" href="#">Staff</a></li>
             </ul>
+            <div class="contact-btn"><a href="#" style="color: white;">Contact</a></div>
         </nav>
+        <button class="hamburger"><i class="menuIcon"><ion-icon name="menu-outline" size="large"></ion-icon></i> <i
+                class="closeIcon"><ion-icon name="close-outline" size="large"></ion-icon></i> </button>
     </header>
 
     <main>
+        <div class="graphics">Graphics</div>
+
         <div class="container">
+            <h1> Welcome Graduates!</h1>
+
             <div class="description">
-                <h1> Welcome Graduates </h1>
                 <p>Browse through the digital yearbook of your graduating class!</p>
                 <p id="login">
                 <a href="login.php">Log into your yearbook</a>
                 </p>
             </div>
         </div>
-        <div class="graphics">Graphics</div>
     </main>
+
+
+    <script src="hamburger.js"></script>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>
