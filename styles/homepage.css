@@ -60,7 +60,6 @@ h1 {
 main {
     display: flex;
     flex-direction: row;
-    justify-content: center;
     align-items: center;
     height: calc(100vh - 80px);
     font-family: "Poppins", sans-serif;
@@ -82,15 +81,6 @@ main {
     justify-content: space-evenly;
 }
 
-.graphics {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40%;
-    height: 85%;
-    margin: 40px;
-    background-color: rgb(231, 231, 231);
-}
 
 #login {
     background-color: rgb(38, 38, 38);
@@ -108,4 +98,34 @@ main {
         white-space: normal;
     }
     
+}
+
+.graphics {
+    position: relative;
+    width: 50%;
+    height: calc(100vh - 80px);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+
+.graphics img {
+    position: absolute;
+    width: 400px;
+    height: 600px;
+    object-fit: cover;
+    border: 20px solid;
+}
+
+.graphics img:nth-child(1) {
+    left: 5px;
+    transform: rotate(-10deg);
+    border-color: #f9dc5c;
+}
+
+.graphics img:nth-child(2) {
+    left: 200px;
+    transform: rotate(10deg);
+    border-color: #456990;
 }
