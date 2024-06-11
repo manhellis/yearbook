@@ -157,31 +157,39 @@
             }
         });
 
-        const handleLogin = () => {
-            var email = document.getElementById('email').value;
-            var password = document.getElementById('password').value;
+        const handleLogin = async () => {
+            const email = document.getElementById('email')?.value;
+            const password = document.getElementById('password')?.value;
 
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', 'authenticate.php', true);
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    var response = JSON.parse(xhr.responseText);
-                    if (response.status === 'success') {
-                        window.location.href = 'student_page.php?id=' + encodeURIComponent(response.id);
-                    } else {
-                        document.getElementById('errorMessage').style.display = 'block';
-                        document.getElementById('errorMessage').innerText = response.response;
+            try {
+                const response = await fetch('authenticate.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: new URLSearchParams({ email, password }),
+                });
+
+                const result = await response.json();
+
+                if (result.status === 'success') {
+                    window.location.href = `student_page.php?id=${encodeURIComponent(result.id)}`;
+                } else {
+                    const errorMessage = document.getElementById('errorMessage');
+                    if (errorMessage) {
+                        errorMessage.style.display = 'block';
+                        errorMessage.innerText = result.response;
                     }
                 }
-            };
-            xhr.send('email=' + encodeURIComponent(email) + '&password=' + encodeURIComponent(password));
+            } catch (error) {
+                console.error('Error:', error);
+            }
         };
 
         const handleCreateAccount = () => {
-            var email = document.getElementById('email').value;
+            const email = document.getElementById('email').value;
             console.log(email);
-            var password = document.getElementById('password').value;
+            const password = document.getElementById('password').value;
             document.querySelector(".container").style.display = 'none';
             document.querySelector(".create-container").style.display = 'flex';
             document.querySelector('.form-img').style.display = 'block';
@@ -218,5 +226,4 @@
     </script>
     <script src="./scripts/form.js"></script>
 </body>
-
 </html>
