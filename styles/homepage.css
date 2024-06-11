@@ -133,6 +133,7 @@ h1 {
 
 
 
+
 /* - Ipad to small laptop */
 @media screen and (min-width: 769px) {
     .hamburger {
@@ -188,12 +189,6 @@ h1 {
         align-items: start;
     }
 
-    .graphics {
-        order: 2;
-        height: 80%;
-        width: 45vw;
-    }
-
     .description {
         width: 100%;
         align-items: start;
@@ -223,10 +218,14 @@ h1 {
     .container {
         width: 30%;
     }
-    
 }
 
+/* Graphics Media Queries */
+
+@media screen and (min-width: 1277px) {
+
 .graphics {
+    order: 2;
     position: relative;
     width: 50%;
     height: calc(100vh - 80px);
@@ -239,14 +238,13 @@ h1 {
 .graphics img {
     position: absolute;
     width: 300px;
-    height: 400px;
+    height: 420px;
     object-fit: cover;
     border: 20px solid;
 }
 
 .graphics img:nth-child(1) {
     right: 190px;
-    bottom: 60px;
     transform: rotate(20deg);
     border-color: #456990;
 }
@@ -254,4 +252,5 @@ h1 {
 .graphics img:nth-child(2) {
     right: 400px;
     border-color: #f9dc5c;
+}
 }
