@@ -13,16 +13,11 @@
 
 body {
     min-height: 100vh;
-}
-
-main {
     display: flex;
-    flex-direction: column-reverse;
-    align-items: center;
-    width: 100vw;
-    height: calc(100vh - 80px)
+    flex-direction: column;
 }
 
+/* header and hamburger */
 header {
     box-shadow: 0 0 20px rgb(235, 235, 235);
     background-color: white;
@@ -31,6 +26,7 @@ header {
     align-items: center;
     padding: 15px 40px;
     font-size: 16px;
+    background: white;
 }
 
 .menuItem {
@@ -60,7 +56,7 @@ header {
     display: none;
 }
 
-/* - Hamburger content */
+/* hamburger content */
 .menu {
     position: fixed;
     transform: translateX(100%);
@@ -93,16 +89,21 @@ ul {
 /* ------------------------------------------------------------------------------------------------------------------ */
 
 /* - Main content */
-h1 {
+main {
     display: flex;
-    justify-content: center;
+    flex-direction: column-reverse;
+    justify-content: start;
     align-items: center;
-    text-align: center;
-    padding: 2vh 0;
-    font-size: 30px;
-    line-height: 50px;
-    color: rgb(75, 133, 221);
+    /* take remaining space after header */
+    flex-grow: 1;
+}
 
+h1 {
+    text-align: center;
+    padding-bottom: calc( min( 0.75em, 1vh ) );
+    font-size: 30px;
+    line-height: 110%;
+    color: rgb(75, 133, 221);
 }
 
 .container {
@@ -110,6 +111,9 @@ h1 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: calc( min( 2em, 1vh ) );
+    flex-basis: 50%;
+    padding: 1em 4em;
 }
 
 
@@ -118,7 +122,6 @@ h1 {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    width: 70%;
 }
 
 
@@ -137,33 +140,37 @@ h1 {
 }
 
 .graphics {
-    height: calc(50vh - 50px);
+    flex: 1;
+    flex-basis: 50%;
+    align-self: stretch; /* fullheight when parent is flex row */
+    max-height: 50vh;
     width: 100%;
-    margin: 1em;
+    padding: 1em;
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    position: relative;
 }
 
 .graphics img {
     position: absolute;
-    max-width: 100%;
-    height: auto; /* Preserve aspect ratio */
+    height: 60%;
+    width: auto; /* preserve aspect ratio */
     object-fit: cover;
-    border: 20px solid;
+    border: 1em solid;
+    top: 50%;
+    left: 50%;
+    transform: translate(-70%, -50%);
 }
 
 .graphics img:nth-child(1) {
-    right: 190px;
-    transform: rotate(20deg);
+    transform: translate(-25%, -35%) rotate(20deg) scale(0.9);
     border-color: #456990;
 }
 
 .graphics img:nth-child(2) {
-    right: 400px;
     border-color: #f9dc5c;
 }
-
 
 /* - Ipad to small laptop */
 @media screen and (min-width: 769px) {
@@ -204,26 +211,35 @@ h1 {
 
     main {
         flex-direction: row;
-        justify-content: space-evenly;
-        height: 90vh;
     }
 
     h1 {
         text-align: left;
         font-size: 3em;
+        padding-bottom: 0.5em;
     }
 
     .container {
-        order: 1;
-        height: 50%;
-        width: 300px;
         align-items: start;
+        padding: 4em;
     }
 
     .description {
-        width: 100%;
-        align-items: start;
         text-align: left;
+        align-items: start;
+    }
+
+    .graphics {
+        max-height: unset;
+        overflow: hidden;
+    }
+
+    .graphics img {
+        height: auto; /* preserve aspect ratio */
+        width: 55%;
+        /* a bit strange, but define width in terms of max height
+        so wide screens don't have the image go below the fold */
+        max-width: 50vh;
     }
 }
 
@@ -242,75 +258,6 @@ h1 {
     /* Body Content */
     h1 {
         font-size: 4em;
-        line-height: 70px;
-    }
-
-    .container {
-        width: 30%;
-    }
-}
-
-/* Graphics Media Queries */
-/* Medium screens (tablets) */
-@media screen and (min-width: 601px) and (max-width: 924px) {
-    .graphics {
-        width: 50%;
-    }
-
-    .graphics img {
-        width: 250px;
-        height: 350px;
-    }
-
-    .graphics img:nth-child(1) {
-        left: 100px;
-        transform: rotate(-20deg);
-    }
-
-    .graphics img:nth-child(2) {
-        left: 200px;
-    }
-}
-
-/* Larger screens (desktops) */
-@media screen and (min-width: 925px) and (max-width: 1169px) {
-    .graphics {
-        width: 50%;
-    }
-
-    .graphics img {
-        width: 320px;
-        height: 420px;
-    }
-
-    .graphics img:nth-child(1) {
-        left: 100px;
-        transform: rotate(-20deg);
-    }
-
-    .graphics img:nth-child(2) {
-        left: 250px;
-    }
-}
-
-/* Extra large screens */
-@media screen and (min-width: 1170px) {
-    .graphics {
-        width: 50%;
-        order: 2;
-    }
-
-    .graphics img {
-        width: 320px;
-        height: 420px;
-    }
-
-    .graphics img:nth-child(1) {
-        right: 100px;
-        transform: rotate(20deg);
-    }
-
-    .graphics img:nth-child(2) {
-        right: 300px;
+        padding-bottom: 0.25em;
     }
 }
