@@ -20,7 +20,7 @@
         </div>
         <nav class="menu">
             <ul>
-                <li><a class="menuItem" href="./index.html">Home</a></li>
+                <li><a class="menuItem" href="./index.php">Home</a></li>
                 <li>
                     <a class="menuItem" href="./gallery.php">Gallaries</a>
                 </li>

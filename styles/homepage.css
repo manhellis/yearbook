@@ -41,9 +41,10 @@ p {
 
 
 #login {
-    background-color: rgb(59, 59, 91);
+    background-color: var(--primary-color); 
+    border:none;
     border-radius: 50px;
-    width: 200px;
+    width: calc(100% - 4em);
     padding: 13px;
     margin-top: 20px;
     white-space: nowrap;
@@ -52,7 +53,8 @@ p {
     font-family: var(--font-secondary);
     font-size: var(--body2-font-size);
     color: var(--background-color);
-    
+
+
 
 }
 
