@@ -4,7 +4,7 @@ include_once 'crud.php';
 // Get the student ID from the URL
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $query = $mySQLiconn->prepare("SELECT * FROM students_login WHERE id = ?");
+    $query = $mySQLiconn->prepare("SELECT * FROM new_students WHERE id = ?");
     $query->bind_param("i", $id);
     $query->execute();
     $result = $query->get_result();

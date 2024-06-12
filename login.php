@@ -9,22 +9,30 @@
     <link rel="stylesheet" href="./scripts/loading-bar.min.css">
     <script type="text/javascript" src="./scripts/loading-bar.min.js"></script>
     <script src="https://kit.fontawesome.com/e416cc9f05.js" crossorigin="anonymous"></script>
-
+    <link rel="stylesheet" href="./styles/global.css">
     <link rel="stylesheet" href="./styles/form.css">
 </head>
 
 <body>
     <header>
-        <div class="logo">
-            <h2>BCIT Digital Yearbook</h2>
+        <div class="logo" style="font-weight: 800">
+            BCIT Digital Yearbook
         </div>
-        <nav>
+        <nav class="menu">
             <ul>
-                <li><a href="./index.html">Home</a></li>
-                <li><a href="./gallery.php">Gallaries</a></li>
-                <li><a href="#" style="color: white;"><button id="contact">Contact</a></button></li>
+                <li><a class="menuItem" href="./index.html">Home</a></li>
+                <li>
+                    <a class="menuItem" href="./gallery.php">Gallaries</a>
+                </li>
             </ul>
+            <div class="contact-btn">
+                <a href="#">Contact</a>
+            </div>
         </nav>
+        <button class="hamburger">
+            <i class="menuIcon"><ion-icon name="menu-outline" size="large"></ion-icon></i>
+            <i class="closeIcon"><ion-icon name="close-outline" size="large"></ion-icon></i>
+        </button>
     </header>
 
     <main>
@@ -48,7 +56,7 @@
                     <button type="submit" id="create">Create Account</button>
                     <div class="checkbox">
                         <input type="checkbox" name="#" id="check" required>
-                        <label>By contrinuing you agree to the Terms of use and Privacy Policy</label>
+                        <label>By contributing you agree to the <span class="tos">Terms of use</span> and <span class="tos">Privacy Policy</span></label>
                     </div>
 
                 </form>
@@ -59,7 +67,7 @@
             <div class="returning">
                 <span class="left"></span>
                 <span class="right"></span>
-                <p>New User?</p>
+                <p>Returning User?</p>
                 <!-- go to updating user -->
                 <!-- <a href="./form.php" id="sign-in">Create Account!</a> -->
                 <button id="sign-in">Login</button>
@@ -143,7 +151,7 @@
 
         document.querySelector('#sign-in').addEventListener('click', () => {
             isLogin = !isLogin;
-            console.log(isLogin);
+            // console.log(isLogin);
             switchLogin();
         });
         document.getElementById('loginForm').addEventListener('submit', function(event) {
@@ -167,7 +175,10 @@
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
                     },
-                    body: new URLSearchParams({ email, password }),
+                    body: new URLSearchParams({
+                        email,
+                        password
+                    }),
                 });
 
                 const result = await response.json();
@@ -196,7 +207,7 @@
             document.querySelector('main').style.backgroundImage = 'none';
             document.querySelector('main').style.flexDirection = 'row';
             document.querySelector('#email-1').value = email;
-            
+
         };
 
 
@@ -226,4 +237,5 @@
     </script>
     <script src="./scripts/form.js"></script>
 </body>
+
 </html>

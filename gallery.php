@@ -5,22 +5,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QA Yearbook Login</title>
+    <link rel="stylesheet" href="./styles/global.css">
     <link rel="stylesheet" href="./styles/gallery.css">
     <script src="https://kit.fontawesome.com/e416cc9f05.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <header>
-        <div class="logo">
-            <h2>BCIT Digital Yearbook</h2>
+        <div class="logo" style="font-weight: 800">
+            BCIT Digital Yearbook
         </div>
-        <nav>
+        <nav class="menu">
             <ul>
-                <li><a href="./index.html">Home</a></li>
-                <li><a href="./gallery.php">Galleries</a></li>
-                <li><a href="#" style="color: white;"><button id="contact">Contact</a></button></li>
+                <li><a class="menuItem" href="./index.html">Home</a></li>
+                <li>
+                    <a class="menuItem" href="./gallery.php">Gallaries</a>
+                </li>
             </ul>
+            <div class="contact-btn">
+                <a href="#" >Contact</a>
+            </div>
         </nav>
+        <button class="hamburger">
+            <i class="menuIcon"><ion-icon name="menu-outline" size="large"></ion-icon></i>
+            <i class="closeIcon"><ion-icon name="close-outline" size="large"></ion-icon></i>
+        </button>
     </header>
     <main>
         <div class="container">
@@ -56,7 +65,6 @@
                             echo '<img src="./img/Default_pfp.svg" alt="Default Image" style="width:100%">';
                         } else {
                             echo '<img src="./uploaded_files/' . htmlspecialchars($row['photo']) . '" alt="Student Image" style="width:100%">';
-
                         }
                         echo '<div class="caption">';
                         echo '<h3>' . htmlspecialchars($row['fn']) . ' ' . htmlspecialchars($row['ln']) . '</h3>';
@@ -66,9 +74,9 @@
                     ?>
                 </div>
             </div>
-      
 
-        </div> 
+
+        </div>
         <script>
             document.addEventListener('DOMContentLoaded', () => {
                 const tabs = document.querySelector('.tabs');
@@ -87,12 +95,16 @@
                         // Example: openTab(event, event.target.getAttribute('onclick').split("'")[1]);
                     }
                 });
-                
-                
+
+
             });
         </script>
         </div>
     </main>
+    <script src="hamburger.js"></script>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>
