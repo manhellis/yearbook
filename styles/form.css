@@ -62,6 +62,7 @@
     padding: 1em 7em;
     background-color: #19385c;
     transition: all 0.3s ease;
+    text-align: center;
 }
 #multiStepForm button:not(.previous):hover {
     background-color: #234975;

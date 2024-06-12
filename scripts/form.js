@@ -127,9 +127,12 @@ form.addEventListener("submit", function (event) {
     xhr.onload = function () {
         if (xhr.status === 200) {
             // Handle successful response
+            alert("Form submitted successfully");
+            location.href = "./gallery.php"; 
             console.log("Form submitted successfully:", xhr.responseText);
         } else {
             // Handle error
+            alert("Error submitting form");
             console.error("Error submitting form:", xhr.statusText);
         }
     };
