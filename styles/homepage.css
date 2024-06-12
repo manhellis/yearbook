@@ -134,6 +134,10 @@ h1 {
     white-space: nowrap;
     color: white;
 }
+#login a{
+    color: white;
+
+}
 
 .graphics {
     flex: 1;
