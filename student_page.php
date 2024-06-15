@@ -22,44 +22,67 @@ if (isset($_GET['id'])) {
 
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title><?php echo htmlspecialchars($row['fn']).' '.htmlspecialchars($row['ln']); ?>'s Details</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./styles.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title><?php echo htmlspecialchars($row['fn']) . ' ' . htmlspecialchars($row['ln']); ?>'s Details</title>
+    <link rel="stylesheet" href="./styles/global.css">
+    <link rel="stylesheet" href="./styles/profile.css">
 </head>
+
 <body>
     <header>
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Yearbook</a>
-                </div>
-                <ul class="nav navbar-nav">
-                    <li><a href="index.php">Home</a></li>
-                    <li><a href="browse.php">Browse</a></li>
-                </ul>
+        <div class="logo" style="font-weight: 800">
+            BCIT Digital Yearbook
+        </div>
+        <nav class="menu">
+            <ul>
+                <li><a class="menuItem" href="#">Home</a></li>
+                <li>
+                    <a class="menuItem" href="./gallery.php">Gallaries</a>
+                </li>
+            </ul>
+            <div class="contact-btn">
+                <a href="#">Contact</a>
             </div>
         </nav>
+        <button class="hamburger">
+            <i class="menuIcon"><ion-icon name="menu-outline" size="large"></ion-icon></i>
+            <i class="closeIcon"><ion-icon name="close-outline" size="large"></ion-icon></i>
+        </button>
     </header>
 
-    <div class="container student-details">
-        <div class="row">
-            <div class="col-md-4">
-                <?php if (!is_null($row['photo'])): ?>
-                    <img src="./uploaded_files/<?php echo htmlspecialchars($row['photo']); ?>" class="img-responsive img-thumbnail" alt="Student Photo">
-                <?php endif; ?>
-            </div>
-            <div class="col-md-8">
-                <h1><?php echo htmlspecialchars($row['fn']).' '.htmlspecialchars($row['ln']); ?></h1>
-                <p><strong>Job:</strong> <?php echo htmlspecialchars($row['job']); ?></p>
-                <p><strong>Bio:</strong> <?php echo htmlspecialchars($row['words']); ?></p>
-                <p><strong>Inspires:</strong> <?php echo htmlspecialchars($row['inspire']); ?></p>
-                <p><strong>Dislikes:</strong> <?php echo htmlspecialchars($row['dislike']); ?></p>
+   
+    <main>
+        <!-- <?php
+        print_r($row);
+        ?> -->
+        <div class="title">
+            <?php echo '<h1>' . ucfirst(htmlspecialchars($row['fn'])) . ' ' . ucfirst(htmlspecialchars($row['ln'])) . "</h1>"; ?>
+            <?php echo '<p>' . "Term " . htmlspecialchars($row['term']) . '</p>'; ?>
+        </div>
+        <div class="main-container">
+
+            <img src="<?php 
+            if ($row['photo'] == '') {
+                echo './img/Default_pfp.svg';
+            } else {
+                echo './uploaded_files/' . htmlspecialchars($row['photo']); 
+            }
+            ?>" class="profile" alt="Student Photo">
+
+            <div class="description">
+                <p>Grad Year 2024</p>
+                <ul>
+                    <li><b>Favourite Subject:</b> <?php echo htmlspecialchars($row['subject']); ?></li>
+
+                    <li><b>Favourite Memories:</b> <?php echo htmlspecialchars($row['memory']); ?></li>
+                    <li><b>Post-Grad Plans:</b> <?php echo htmlspecialchars($row['postgrad']); ?></li>
+                    <li><b>Yearbook Qoutes:</b> <?php echo htmlspecialchars($row['quote']); ?></li>
+                </ul>
+                <button id="portfolio">Portfolio</button>
             </div>
         </div>
-        <a href="browse.php" class="btn btn-primary my-2">Back to Browse</a>
-    </div>
+    </main>
 </body>
+
 </html>
