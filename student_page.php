@@ -25,6 +25,10 @@ if (isset($_GET['id'])) {
 
 <head>
     <title><?php echo htmlspecialchars($row['fn']) . ' ' . htmlspecialchars($row['ln']); ?>'s Details</title>
+    <script src="hamburger.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
     <link rel="stylesheet" href="./styles/global.css">
     <link rel="stylesheet" href="./styles/profile.css">
 </head>
