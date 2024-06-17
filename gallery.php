@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QA Yearbook Login</title>
+    <script src="hamburger.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <link rel="stylesheet" href="./styles/global.css">
     <link rel="stylesheet" href="./styles/gallery.css">
     <script src="https://kit.fontawesome.com/e416cc9f05.js" crossorigin="anonymous"></script>
@@ -62,9 +65,9 @@
                     while ($row = $res->fetch_assoc()) {
                         echo '<div class="student" onclick="location.href=\'student_page.php?id=' . htmlspecialchars($row['id']) . '\'" style="cursor:pointer;">';
                         if ($row['photo'] == "") {
-                            echo '<img src="./img/Default_pfp.svg" alt="Default Image" style="width:100%">';
+                            echo '<img src="./img/Default_pfp.svg" alt="Default Image" >';
                         } else {
-                            echo '<img src="./uploaded_files/' . htmlspecialchars($row['photo']) . '" alt="Student Image" style="width:100%">';
+                            echo '<img src="./uploaded_files/' . htmlspecialchars($row['photo']) . '" alt="Student Image" ">';
                         }
                         echo '<div class="caption">';
                         echo '<h3>' . htmlspecialchars($row['fn']) . ' ' . htmlspecialchars($row['ln']) . '</h3>';

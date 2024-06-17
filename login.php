@@ -10,6 +10,7 @@
     <script type="text/javascript" src="./scripts/loading-bar.min.js"></script>
     <script src="https://kit.fontawesome.com/e416cc9f05.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./styles/global.css">
+    <script src="hamburger.js"></script>
     <link rel="stylesheet" href="./styles/form.css">
 </head>
 

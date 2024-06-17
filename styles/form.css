@@ -128,3 +128,16 @@
 .fa-images {
     margin: 1em;
 }
+
+@media (width < 980px){
+    main{
+        flex-direction: column !important;
+    }
+}
+@media (width < 548px){
+    #multiStepForm {
+        padding: 0;
+        min-width: 0;
+    }
+
+}

@@ -79,7 +79,6 @@ input {
 }
 .checkbox label {
     font-size: 12px;
-    white-space: nowrap;
 }
 
 #check {
@@ -141,4 +140,9 @@ input {
 .tos {
     text-decoration: underline;
     color: var(--primary-color);
+}
+@media (max-width: 478px) {
+    .left, .right {
+        display: none;
+    }
 }
